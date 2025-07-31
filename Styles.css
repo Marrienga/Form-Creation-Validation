@@ -1,45 +1,59 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("registration-form");
-  const feedbackDiv = document.getElementById("form-feedback");
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    margin: 0;
+}
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault(); // Stop the form from submitting
+form {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
 
-    // Get and trim values
-    const username = document.getElementById("username").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
 
-    let isValid = true;
-    const messages = [];
+input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: calc(100% - 22px); /* Adjust width to account for padding and border */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
 
-    // Username validation
-    if (username.length < 3) {
-      isValid = false;
-      messages.push("Username must be at least 3 characters long.");
-    }
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
 
-    // Email validation
-    if (!email.includes("@") || !email.includes(".")) {
-      isValid = false;
-      messages.push("Please enter a valid email address.");
-    }
+button:hover {
+    background-color: #0056b3;
+}
 
-    // Password validation
-    if (password.length < 8) {
-      isValid = false;
-      messages.push("Password must be at least 8 characters long.");
-    }
-
-    // Show feedback
-    feedbackDiv.style.display = "block";
-
-    if (isValid) {
-      feedbackDiv.textContent = "Registration successful!";
-      feedbackDiv.style.color = "#28a745"; // Green
-    } else {
-      feedbackDiv.innerHTML = messages.join("<br>");
-      feedbackDiv.style.color = "#dc3545"; // Red
-    }
-  });
-});
+#form-feedback {
+    margin-top: 10px;
+    padding: 10px;
+    color: #d8000c;
+    background-color: #ffbaba;
+    border-radius: 4px;
+    display: none; /* Initially hide the feedback div */
+}
